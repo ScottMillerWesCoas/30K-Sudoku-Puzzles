@@ -1,0 +1,33 @@
+{
+  "name": "recruitment-assessment-sudoku",
+  "version": "1.0.0",
+  "main": "main.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "casperjs": "^1.1.0-beta5",
+    "chai": "^3.5.0",
+    "express": "^4.13.4",
+    "mocha": "^2.4.5",
+    "request": "^2.69.0",
+    "strip-ansi": "^3.0.0",
+    "supertest": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "./test/runcasper test/recruitment-assessment-sudoku.js; node test/parseOutput.js && rm test/output.txt",
+    "start": "node server.js",
+    "get-test-utils": "node test/get-test-utils.js",
+    "merge": "node test/merge.js",
+    "update-package": "node test/update-package.js",
+    "lint": "node test/lint.js main.js server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodesmithLLC/recruitment-assessment-sudoku.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
