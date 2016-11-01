@@ -12,16 +12,22 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser()); 
 
 
-app.get('/sudoku', function(req, res){
+
+app.get('/', function(req, res){
         console.log('in sudoku serve file'); 
         //so res.redirect as opposed to res.sendFile(which returns a 'no such file type error')
-        res.redirect('/sudoku/index.html'); 
+        res.redirect('./index.html'); 
+}); 
+
+app.get('/sudoku', function(req, res){
+        //so res.redirect as opposed to res.sendFile(which returns a 'no such file type error')
+        res.redirect('./index.html'); 
 }); 
 
 app.get('/style.css', function(req, res){
     res.set('Content-Type', 'text/css; charset=UTF-8');
     res.status(200);
-    res.sendFile(path.join(__dirname, './sudoku/style.css'));
+    res.sendFile(path.join(__dirname, './style.css'));
 
 }); 
 
@@ -32,7 +38,7 @@ app.get('/puzzle', function(req, res){
         var thisPuzzleNum = Math.floor(Math.random() * 10000); 
         var thisPuzzle = puzzles[thisPuzzleNum]; 
         //so res.redirect as opposed to res.sendFile(which returns a 'no such file type error')
-        res.redirect('/sudoku/?board=' + thisPuzzle); 
+        res.redirect('/?board=' + thisPuzzle); 
     });  
 }); 
 
@@ -44,7 +50,7 @@ app.get('/puzzle/easy/:id', function(req, res){
         var puzzles = data.split('\n'); 
         var thisPuzzle = puzzles[key]; 
         //so res.redirect as opposed to res.sendFile(which returns a 'no such file type error')
-        res.redirect('/sudoku/?board=' + thisPuzzle); 
+        res.redirect('/?board=' + thisPuzzle); 
     });  
 });  
 app.get('/puzzle/medium/:id', function(req, res){
@@ -101,16 +107,7 @@ app.get('/hardData', function(req, res){
     });  
 }); 
 
-app.get('/', function(req, res){
-        console.log('in sudoku serve file'); 
-        //so res.redirect as opposed to res.sendFile(which returns a 'no such file type error')
-        res.redirect('./index.html'); 
-}); 
 
-app.get('/sudoku', function(req, res){
-        console.log('in sudoku serve file'); 
-        //so res.redirect as opposed to res.sendFile(which returns a 'no such file type error')
-        res.redirect('./index.html'); 
-}); 
+
 
 app.listen(3090, function(){console.log('listening on 3090');}); 
